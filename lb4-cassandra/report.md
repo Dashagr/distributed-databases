@@ -2,6 +2,7 @@
 ### представленно рішення для 3-х варіантів
 
 Перший варіант
+
 keyspace = blog
 
 CREATE and READ
@@ -18,12 +19,14 @@ DELETE and READ
 
 ![alt text](screenshots/4.png "Скріншот 1 варіанту")
 
-##Другий варіант
+## Другий варіант
+
 keyspace = shop
 
 ![alt text](screenshots/5.png "Скріншот 1 варіанту")
 
-##Другий варіант
+## Другий варіант
+
 keyspace = football
 
 ![alt text](screenshots/6.png "Скріншот 1 варіанту")
