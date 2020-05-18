@@ -25,7 +25,7 @@ keyspace = shop
 
 ![alt text](screenshots/5.png "Скріншот 1 варіанту")
 
-## Другий варіант
+## Третій варіант
 
 keyspace = football
 
