@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  balancer:
+    build:
+      context: ./balancer
+      dockerfile: Dockerfile
+    image: balancer
+    ports:
+      - "8083:80"
+    depends_on: 
+      - web_1
+      - web_2
+      - web_3
+      - web_4
+      - web_5
+  web_1:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: web_1
+    ports:
+      - ${WEB_1_PORT}:${WEB_1_PORT}
+    environment:
+      - PORT=${WEB_1_PORT}
+  web_2:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: web_2
+    ports:
+      - ${WEB_2_PORT}:${WEB_2_PORT}
+    environment:
+      - PORT=${WEB_2_PORT}
+  web_3:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: web_3
+    ports:
+      - ${WEB_3_PORT}:${WEB_3_PORT}
+    environment:
+      - PORT=${WEB_3_PORT}
+  web_4:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: web_4
+    ports:
+      - "${WEB_4_PORT}:${WEB_4_PORT}"
+    environment:
+      - "PORT=${WEB_4_PORT}"
+  web_5:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: web_5
+    ports:
+      - "${WEB_5_PORT}:${WEB_5_PORT}"
+    environment:
+      - "PORT=${WEB_5_PORT}"
