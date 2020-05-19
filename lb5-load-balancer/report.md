@@ -31,7 +31,7 @@ NGINX використовує контексти конфігурації, як
 * Random
 
 4. Поясніть конфігурацію NGINX для балансування навантаження.
-
+```
 http {
     upstream python-cluster {
         server 172.17.0.1:8011;
@@ -40,7 +40,6 @@ http {
 	    server 172.17.0.1:8014;
 	    server 172.17.0.1:8015;
     }
-
     server {
         listen 80;
 
@@ -53,5 +52,5 @@ http {
 events {
     worker_connections 1024;
 }
-
+```
 
