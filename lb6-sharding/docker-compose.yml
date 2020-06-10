@@ -1,0 +1,34 @@
+version: '3'
+services:
+  mysql:
+    image: "mysql:5.7"
+    ports:
+      - "3307:3307"
+    container_name: sharding-sphere-mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ../../../src/resources/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+
+  zookeeper:
+    image: "zookeeper:3.4"
+    ports: 
+      - "2181:2181"
+    container_name: sharding-sphere-zookeeper
+
+  etcd:
+    image: "quay.io/coreos/etcd:v3.3.12"
+    ports: 
+      - "2379:2379"
+      - "2380:2380"
+      - "4001:4001"
+    container_name: sharding-sphere-etcd
+    entrypoint: /usr/local/bin/etcd
+    command:
+      - '--advertise-client-urls=http://0.0.0.0:2379'
+      - '--listen-client-urls=http://0.0.0.0:2379'
+      - '--initial-advertise-peer-urls=http://0.0.0.0:2380'
+      - '--listen-peer-urls=http://0.0.0.0:2380'
+      - '--initial-cluster'
+      - 'default=http://0.0.0.0:2380'
+  
